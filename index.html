@@ -107,6 +107,15 @@
     padding:90px 32px 40px;
   }
   .mobile-panel.is-open{transform:translateX(0);}
+  .mobile-close{
+    position:absolute; top:22px; right:22px;
+    width:46px; height:46px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--sand);
+    font-size:28px; line-height:1;
+  }
   .mobile-panel nav{
     display:flex; flex-direction:column; gap:6px;
   }
@@ -116,9 +125,6 @@
   }
   .mobile-panel .header-cta{
     margin-top:32px; justify-content:center; padding:16px 20px; font-size:15.5px;
-  }
-  .mobile-panel .panel-sub{
-    margin-top:auto; color:var(--sage); font-size:13px; line-height:1.6;
   }
   .scrim{
     position:fixed; inset:0; background:rgba(10,16,15,.5);
@@ -301,6 +307,7 @@
 
 <div class="scrim" id="scrim"></div>
 <div class="mobile-panel" id="mobilePanel">
+  <button class="mobile-close" id="mobileCloseBtn" aria-label="Закрыть меню">×</button>
   <nav>
     <a href="#about">Обо мне</a>
     <a href="#requests">С чем работаю</a>
@@ -309,7 +316,6 @@
     <a href="#contacts">Контакты</a>
   </nav>
   <a href="https://t.me/YakovlevSergey_SPB" class="header-cta" target="_blank" rel="noreferrer">Бесплатная консультация — 30 минут</a>
-  <p class="panel-sub">Санкт-Петербург · онлайн и очно<br>Тг: @YakovlevSergey_SPB</p>
 </div>
 
 <section class="hero" id="hero">
@@ -364,6 +370,7 @@
 
 <script>
   const burgerBtn = document.getElementById('burgerBtn');
+  const mobileCloseBtn = document.getElementById('mobileCloseBtn');
   const mobilePanel = document.getElementById('mobilePanel');
   const scrim = document.getElementById('scrim');
 
@@ -375,6 +382,7 @@
     document.body.style.overflow = isOpen ? 'hidden' : '';
   }
   burgerBtn.addEventListener('click', toggleMenu);
+  mobileCloseBtn.addEventListener('click', toggleMenu);
   scrim.addEventListener('click', toggleMenu);
   document.querySelectorAll('.mobile-panel a').forEach(a=>{
     a.addEventListener('click', toggleMenu);
